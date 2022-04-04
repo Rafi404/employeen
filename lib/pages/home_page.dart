@@ -21,48 +21,22 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     ///check flag
-    // print('On loading Data');
-    // var dataStatus = await Provider.of<EmployeeProvider>(context, listen: false)
-    //     .getDataStatus()
-    //     .toString();
-    // print('ggg$dataStatus');
     checkDataStatus();
-
     setState(() {
-      print('here');
       Provider.of<DatabaseConnectionProvider>(context, listen: false).getData();
     });
-
-
-    // ///api call
-    // Provider.of<EmployeeProvider>(context, listen: false)
-    //     .getEmployees()
-    //     .then((value) =>
-    //         Provider.of<DatabaseConnectionProvider>(context, listen: false)
-    //             .insertDatabase(value));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: InkWell(
-          onTap: () {
-            print('local loading');
-            Provider.of<EmployeeProvider>(context, listen: false)
-                .getEmployees()
-                .then((value) => Provider.of<DatabaseConnectionProvider>(
-                        context,
-                        listen: false)
-                    .insertDatabase(value));
-          },
-          child: Text(
-            'Team',
-            style: TextStyle(
-                color: textColorPrimary,
-                fontSize: 28,
-                fontFamily: 'poppinsBold'),
-          ),
+        title: Text(
+          'Team',
+          style: TextStyle(
+              color: textColorPrimary,
+              fontSize: 28,
+              fontFamily: 'poppinsBold'),
         ),
         backgroundColor: bgColor,
         elevation: 0,
@@ -100,11 +74,7 @@ class _HomePageState extends State<HomePage> {
   checkDataStatus() async {
     var dataStatus = await Provider.of<EmployeeProvider>(context, listen: false)
         .getDataStatus();
-    print('ggg$dataStatus');
-
     if (dataStatus == null) {
-      print('oiii');
-
       Provider.of<EmployeeProvider>(context, listen: false)
           .getEmployees()
           .then((value) =>
@@ -116,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                     .getData(),
           );
 
-     setState(() {
+      setState(() {
         Provider.of<DatabaseConnectionProvider>(context, listen: false)
             .getData();
       });

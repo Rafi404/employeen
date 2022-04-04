@@ -1,13 +1,10 @@
 import 'dart:convert';
-
 import 'package:employeen/model/employee_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 
 class EmployeeProvider with ChangeNotifier {
-
-
   ///Table creation
 
   ///Getting Data from API
@@ -22,9 +19,8 @@ class EmployeeProvider with ChangeNotifier {
     var dataStatus = '200';
     await storage.write(key: "dataStatus", value: dataStatus);
     var webDataStatus = await storage.read(key: "dataStatus");
-    print(webDataStatus);
+    // print(webDataStatus);
 
-    print('eeeeee');
     List<EmployeeList> employee = [];
     for (var i in employeeData) {
       try {
@@ -45,7 +41,6 @@ class EmployeeProvider with ChangeNotifier {
             company: i["company"]?["name"],
             catchPhrase: i["company"]?["catchPhrase"],
             bs: i["company"]?["bs"]);
-        // print(allEmployee);
         employee.add(allEmployee);
       } catch (e) {
         print(e);
@@ -55,10 +50,9 @@ class EmployeeProvider with ChangeNotifier {
   }
 
   ///Read data status
-  Future getDataStatus()  async {
+  Future getDataStatus() async {
     const storage = FlutterSecureStorage();
     var dataStatus = await storage.read(key: "dataStatus");
-    // print('eeeeeeee$dataStatus');
     return dataStatus;
   }
 }

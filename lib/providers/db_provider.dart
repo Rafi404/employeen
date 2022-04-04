@@ -19,8 +19,7 @@ class DatabaseConnectionProvider with ChangeNotifier {
 
   ///Create Database
   _onCreatingDatabase(Database database, int version) async {
-    await database.execute(
-        "CREATE TABLE employees(id INTEGER, name TEXT, "
+    await database.execute("CREATE TABLE employees(id INTEGER, name TEXT, "
         "username TEXT, email TEXT, profile_image TEXT, street TEXT, suite TEXT, city TEXT, "
         "zipcode TEXT, geo_lat text, geo_lng TEXT, phone TEXT, website TEXT, company_name TEXT,"
         " catchPhrase TEXT, bs TEXT)");
@@ -45,7 +44,7 @@ class DatabaseConnectionProvider with ChangeNotifier {
   Future<List<Map<String, dynamic>>?> getData() async {
     Database db = await setDatabase();
     List<Map<String, dynamic>> data = await db.query("employees");
-    print('data from table$data');
+    // print('data from table$data');
     return data;
   }
 }

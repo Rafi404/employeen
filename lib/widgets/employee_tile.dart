@@ -9,17 +9,16 @@ class EmployeeTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading:  CircleAvatar(
+      leading: CircleAvatar(
           child: Hero(
         tag: 'avatar',
-        child:Container(
+        child: Container(
           width: 100,
           height: 100,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
               color: Colors.grey,
-              border:
-              Border.all(color: textColorSecondary, width: 5),
+              border: Border.all(color: textColorSecondary, width: 5),
               boxShadow: const [
                 BoxShadow(
                   color: Colors.grey,
@@ -49,7 +48,7 @@ class EmployeeTile extends StatelessWidget {
       dense: false,
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-          return  EmployeeDetails(employeeData : employeeData);
+          return EmployeeDetails(employeeData: employeeData);
         }));
       },
     );

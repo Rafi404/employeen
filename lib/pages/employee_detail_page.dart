@@ -26,13 +26,15 @@ class EmployeeDetails extends StatelessWidget {
         backgroundColor: bgColor,
         elevation: 0,
         leading: IconButton(
-          onPressed: (){
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) {
-                  return const HomePage();
-                }));
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+              return const HomePage();
+            }));
           },
-          icon: Icon(Icons.arrow_back,color: textColorPrimary,),
+          icon: Icon(
+            Icons.arrow_back,
+            color: textColorPrimary,
+          ),
         ),
       ),
       body: Column(
@@ -47,18 +49,17 @@ class EmployeeDetails extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 letterSpacing: 1.2),
           ),
-           CircleAvatar(
-             radius: 50,
-             child: Hero(
+          CircleAvatar(
+            radius: 50,
+            child: Hero(
               tag: 'avatar',
-              child:Container(
+              child: Container(
                 width: 100,
                 height: 100,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
                     color: textColorSecondary,
-                    border:
-                    Border.all(color: textColorSecondary, width: 5),
+                    border: Border.all(color: textColorSecondary, width: 5),
                     boxShadow: const [
                       BoxShadow(
                         color: Colors.grey,
@@ -71,8 +72,8 @@ class EmployeeDetails extends StatelessWidget {
                   child: Image.network(employeeData!["profile_image"]),
                 ),
               ),
+            ),
           ),
-           ),
           smSpace,
           Text(
             '@${employeeData!["username"]}',
@@ -92,13 +93,12 @@ class EmployeeDetails extends StatelessWidget {
                 color: textColorPrimary,
                 letterSpacing: .6),
           ),
-
           smSpace,
           Expanded(
             child: ListView(
-              children:  [
+              children: [
                 DataTile(
-                  tileSubTitle: employeeData!["phone"] ??'',
+                  tileSubTitle: employeeData!["phone"] ?? '',
                   tileTitle: 'Phone',
                   tileIcon: Icons.phone_iphone,
                 ),
@@ -140,7 +140,6 @@ class EmployeeDetails extends StatelessWidget {
               ],
             ),
           ),
-
         ],
       ),
     );
