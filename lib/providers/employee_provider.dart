@@ -6,7 +6,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 
 class EmployeeProvider with ChangeNotifier {
-  bool webDataStatus = true;
+
 
   ///Table creation
 
@@ -19,9 +19,10 @@ class EmployeeProvider with ChangeNotifier {
 
     ///Save webData status
     const storage = FlutterSecureStorage();
-    await storage.write(key: "webDataStatus", value: webDataStatus.toString());
-    var dataStatus = storage.read(key: "webDataStatus");
-    print(dataStatus);
+    var dataStatus = '200';
+    await storage.write(key: "dataStatus", value: dataStatus);
+    var webDataStatus = await storage.read(key: "dataStatus");
+    print(webDataStatus);
 
     print('eeeeee');
     List<EmployeeList> employee = [];
@@ -54,11 +55,10 @@ class EmployeeProvider with ChangeNotifier {
   }
 
   ///Read data status
-  Future<bool> getDataStatus() async {
+  Future getDataStatus()  async {
     const storage = FlutterSecureStorage();
-    bool dataStatus = (await storage.read(key: "webDataStatus")) as bool;
-    // print('eeeeeeee${dataStatus.toString()}');
-    notifyListeners();
+    var dataStatus = await storage.read(key: "dataStatus");
+    // print('eeeeeeee$dataStatus');
     return dataStatus;
   }
 }

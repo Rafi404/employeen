@@ -6,7 +6,6 @@ import 'package:employeen/widgets/search_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,24 +19,50 @@ class _HomePageState extends State<HomePage> {
   @override
   initState() {
     super.initState();
-    ///check flag
 
-    ///api call
-    Provider.of<EmployeeProvider>(context, listen: false)
-        .getEmployees()
-        .then((value) =>
-            Provider.of<DatabaseConnectionProvider>(context, listen: false)
-                .insertDatabase(value));
+    ///check flag
+    // print('On loading Data');
+    // var dataStatus = await Provider.of<EmployeeProvider>(context, listen: false)
+    //     .getDataStatus()
+    //     .toString();
+    // print('ggg$dataStatus');
+    checkDataStatus();
+
+    setState(() {
+      print('here');
+      Provider.of<DatabaseConnectionProvider>(context, listen: false).getData();
+    });
+
+
+    // ///api call
+    // Provider.of<EmployeeProvider>(context, listen: false)
+    //     .getEmployees()
+    //     .then((value) =>
+    //         Provider.of<DatabaseConnectionProvider>(context, listen: false)
+    //             .insertDatabase(value));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Team',
-          style: TextStyle(
-              color: textColorPrimary, fontSize: 28, fontFamily: 'poppinsBold'),
+        title: InkWell(
+          onTap: () {
+            print('local loading');
+            Provider.of<EmployeeProvider>(context, listen: false)
+                .getEmployees()
+                .then((value) => Provider.of<DatabaseConnectionProvider>(
+                        context,
+                        listen: false)
+                    .insertDatabase(value));
+          },
+          child: Text(
+            'Team',
+            style: TextStyle(
+                color: textColorPrimary,
+                fontSize: 28,
+                fontFamily: 'poppinsBold'),
+          ),
         ),
         backgroundColor: bgColor,
         elevation: 0,
@@ -47,8 +72,9 @@ class _HomePageState extends State<HomePage> {
           const SearchBar(),
           Expanded(
             child: FutureBuilder(
-              future:
-                  Provider.of<DatabaseConnectionProvider>(context).getData(),
+              future: Provider.of<DatabaseConnectionProvider>(context,
+                      listen: false)
+                  .getData(),
               builder: (BuildContext context, snapshot) {
                 if (snapshot.hasData) {
                   List<Map<String, dynamic>> data =
@@ -69,5 +95,31 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
+  }
+
+  checkDataStatus() async {
+    var dataStatus = await Provider.of<EmployeeProvider>(context, listen: false)
+        .getDataStatus();
+    print('ggg$dataStatus');
+
+    if (dataStatus == null) {
+      print('oiii');
+
+      Provider.of<EmployeeProvider>(context, listen: false)
+          .getEmployees()
+          .then((value) =>
+              Provider.of<DatabaseConnectionProvider>(context, listen: false)
+                  .insertDatabase(value))
+          .then(
+            (value) =>
+                Provider.of<DatabaseConnectionProvider>(context, listen: false)
+                    .getData(),
+          );
+
+     setState(() {
+        Provider.of<DatabaseConnectionProvider>(context, listen: false)
+            .getData();
+      });
+    }
   }
 }
