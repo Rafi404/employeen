@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "C:\\Rafi\\Project\\employeen\\build\\sqflite\\intermediates\\res\\merged\\release\\layout\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\SaNju~\\.gradle\\caches\\transforms-2\\files-2.1\\16a4eaa9083fcb08b8642b835d688c88\\core-1.6.0\\res\\layout\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "C:\\Rafi\\Project\\employeen\\build\\sqflite\\intermediates\\res\\merged\\release\\layout\\notification_template_part_chronometer.xml",
+        "source": "C:\\Users\\SaNju~\\.gradle\\caches\\transforms-2\\files-2.1\\16a4eaa9083fcb08b8642b835d688c88\\core-1.6.0\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "C:\\Rafi\\Project\\employeen\\build\\sqflite\\intermediates\\res\\merged\\release\\layout\\notification_template_part_time.xml",
+        "source": "C:\\Users\\SaNju~\\.gradle\\caches\\transforms-2\\files-2.1\\16a4eaa9083fcb08b8642b835d688c88\\core-1.6.0\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "C:\\Rafi\\Project\\employeen\\build\\sqflite\\intermediates\\res\\merged\\release\\layout\\custom_dialog.xml",
+        "source": "C:\\Users\\SaNju~\\.gradle\\caches\\transforms-2\\files-2.1\\16a4eaa9083fcb08b8642b835d688c88\\core-1.6.0\\res\\layout\\custom_dialog.xml"
+    },
+    {
+        "merged": "C:\\Rafi\\Project\\employeen\\build\\sqflite\\intermediates\\res\\merged\\release\\layout\\notification_action.xml",
+        "source": "C:\\Users\\SaNju~\\.gradle\\caches\\transforms-2\\files-2.1\\16a4eaa9083fcb08b8642b835d688c88\\core-1.6.0\\res\\layout\\notification_action.xml"
+    },
+    {
+        "merged": "C:\\Rafi\\Project\\employeen\\build\\sqflite\\intermediates\\res\\merged\\release\\layout\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\SaNju~\\.gradle\\caches\\transforms-2\\files-2.1\\16a4eaa9083fcb08b8642b835d688c88\\core-1.6.0\\res\\layout\\notification_action_tombstone.xml"
+    }
+]
